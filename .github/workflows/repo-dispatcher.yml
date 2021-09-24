@@ -10,8 +10,8 @@ name: Repo Dispatcher
 
 on: 
   # push: 
-  #   branches:
-  #     - master
+  #  branches:
+  #    - master
   schedule:
     - cron: 30 13 * * *
   workflow_dispatch:
