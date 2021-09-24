@@ -19,7 +19,7 @@ on:
       skip:
         description: 'Skip version check'
         required: false
-        default: 'true'
+        default: 'false'
 
 env:
   REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
