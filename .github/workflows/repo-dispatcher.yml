@@ -9,8 +9,8 @@
 name: Repo Dispatcher
 
 on: 
-  push: 
-    branches:
+  # push: 
+  branches:
       - V2
   schedule:
     - cron: 30 13 * * *
