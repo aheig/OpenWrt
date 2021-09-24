@@ -19,6 +19,8 @@ sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' 
 sed -i 's/\/cgi-bin\/\(luci\|cgi-\)/\/\1/g' `find package/feeds/custom/luci-*/ -name "*.lua" -or -name "*.htm*" -or -name "*.js"` &
 sed -i 's/Os/O2/g' include/target.mk
 sed -i 's/$(TARGET_DIR)) install/$(TARGET_DIR)) install --force-overwrite/' package/Makefile
+# Change SSH Prot
+sed -i 's/22/2333/g' package/network/services/dropbear/files/dropbear.config
 sed -i 's/root:.*/root:$1$McPtUJaL$M47t/nUbjYrWraS5NgvOx0:18552:0:99999:7:::/g' package/base-files/files/etc/shadow
 sed -i -e '$a /etc/sysupgrade.conf' \
        -e '/etc/sysupgrade.conf' \
