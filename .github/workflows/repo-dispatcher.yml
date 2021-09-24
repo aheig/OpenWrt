@@ -72,7 +72,6 @@ jobs:
           REPO_BRANCH="$((curl -gs -H 'Content-Type: application/json' \
              -H "Authorization: Bearer ${{ secrets.REPO_TOKEN }}" \
              -X POST -d '{ "query": "query {repository(owner: \"openwrt\", name: \"openwrt\") {refs(refPrefix: \"refs/tags/\", last: 4, orderBy: {field: TAG_COMMIT_DATE, direction: ASC}) {edges {node {name}}}}}"}' https://api.github.com/graphql) | jq -r '.data.repository.refs.edges[].node.name' | grep v21 | tail -n 1)"
-            if [ $REPO_BRANCH_r != $REPO_BRANCH ]; then
               curl \
               -X POST https://api.github.com/repos/${{ github.repository }}/dispatches \
               -H "Accept: application/vnd.github.everest-preview+json" \
@@ -88,6 +87,5 @@ jobs:
 #              -H "Accept: application/vnd.github.everest-preview+json" \
 #              -H "Authorization: token ${{ secrets.REPO_TOKEN }}" \
 #              -d '{"event_type": "nanopi-r4s ${{ env.SSH }}", "client_payload": {"target": "nanopi-r4s"}}'
-            fi
         fi
 
